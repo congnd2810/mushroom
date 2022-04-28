@@ -20,7 +20,7 @@ from sklearn.preprocessing import MultiLabelBinarizer
 import os
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
-from efficientnet_pytorch import EfficientNet
+# from efficientnet_pytorch import EfficientNet
 from transformers import get_cosine_schedule_with_warmup
 from sklearn.metrics import roc_auc_score 
 from tqdm import tqdm 
@@ -171,9 +171,9 @@ if __name__ == '__main__':
       print(f'Epoch [{epoch+1}/{epochs}] - ACC_1 : {correct_1/len(gemStoneDataset_val)*100}%')
       print(f'Epoch [{epoch+1}/{epochs}] - ACC_5 : {correct_5/len(gemStoneDataset_val)*100}%')
       print(len(train_loader), " ", len(val_loader), " ", len(gemStoneDataset_val))
-      if not os.path.exists(f'checkpoints//{epoch + 1}'):
-          os.mkdir(f'checkpoints/Eff/{epoch + 1}')
-      with open(f'checkpoints/Eff/{epoch + 1}/metrics.txt', "w") as f:
+      if not os.path.exists(f'checkpoints/vgg/{epoch + 1}'):
+          os.mkdir(f'checkpoints/vgg/{epoch + 1}')
+      with open(f'checkpoints/vgg/{epoch + 1}/metrics.txt', "w") as f:
               f.write(f'Epoch [{epoch+1}/{epochs}] - Train data loss : {epoch_train_loss/len(train_loader):.4f}\n')
               f.write(f'Epoch [{epoch+1}/{epochs}] - Val data loss : {epoch_val_loss/len(val_loader):.4f}\n')
               f.write(f'Epoch [{epoch+1}/{epochs}] - ACC_1 : {correct_1/len(gemStoneDataset_val)*100}%\n')
